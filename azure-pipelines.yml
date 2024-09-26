@@ -37,3 +37,14 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: AzureCLI@2
+      displayName: 'Deploy to Azure Container Apps'
+      inputs:
+        azureSubscription: 'c7e8d9be-d62e-48d9-9fea-f0cb56681c3c'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az containerapp update \
+            --name my-container-app \
+            --resource-group my-resource-group \
+            --image vregistry.azurecr.io/$(imageRepository):$(tag)
