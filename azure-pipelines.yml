@@ -44,7 +44,13 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az containerapp update \
-            --name my-container-app \
-            --resource-group my-resource-group \
-            --image vregistry.azurecr.io/$(imageRepository):$(tag)
+          az containerapp create \
+            --name flask-app \
+            --resource-group vignesh-trial \
+            --environment my-container-app-env \
+            --image vregistry.azurecr.io/$(imageRepository):$(tag)  \
+            --target-port 80 \
+            --ingress 'external' \
+            --cpu 0.5 \
+            --memory 1.0Gi
+            
