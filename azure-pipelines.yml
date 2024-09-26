@@ -40,7 +40,7 @@ stages:
     - task: AzureCLI@2
       displayName: 'Deploy to Azure Container Apps'
       inputs:
-        azureSubscription: 'c7e8d9be-d62e-48d9-9fea-f0cb56681c3c'
+        azureSubscription: 'azure-connection'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
