@@ -8,9 +8,6 @@ trigger:
 resources:
 - repo: self
 
-pool:
-  name: 'pipeline-agent-pool'
-
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '9ab379af-770a-4ad9-8ff4-91e39f7d2bda'
@@ -29,7 +26,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      name: 'pipeline-agent-pool'
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
