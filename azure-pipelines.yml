@@ -47,7 +47,7 @@ stages:
           az containerapp create \
             --name flask-app \
             --resource-group vignesh-trial \
-            --environment dev \
+            --environment managedEnvironment-vigneshtrial-842b \
             --image vregistry.azurecr.io/$(imageRepository):$(tag)  \
             --target-port 80 \
             --ingress 'external' \
